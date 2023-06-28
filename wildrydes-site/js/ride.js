@@ -46,7 +46,7 @@ WildRydes.map = WildRydes.map || {};
                 Accept: "*/*",
                 Authorization: authToken
             },
-            data: JSON.stringify({
+            body: JSON.stringify({
                 rideId : unicornID
             }),
             contentType : 'application/json',
