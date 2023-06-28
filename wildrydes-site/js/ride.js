@@ -38,6 +38,25 @@ WildRydes.map = WildRydes.map || {};
         });
     }
 
+    function getUnicorn(unicornID){
+        $.ajax({
+            method : 'GET',
+            url: _config.api.invokeUrl + '/ride',
+            headers: {
+                Authorization: authToken
+            },
+            data: JSON.stringify({
+                rideId : unicornID
+            }),
+            contentType : 'application/json',
+            success : getReqComplete
+        })
+    }
+
+    function getReqComplete(res){
+        console.log(res)
+    }
+
     function completeRequest(result) {
         var unicorn;
         var pronoun;
@@ -80,6 +99,7 @@ WildRydes.map = WildRydes.map || {};
         var pickupLocation = WildRydes.map.selectedPoint;
         event.preventDefault();
         requestUnicorn(pickupLocation);
+        getUnicorn("fr12M48Lm3cgYfpUvSanfA")
     }
 
     function animateArrival(callback) {
