@@ -43,13 +43,18 @@ WildRydes.map = WildRydes.map || {};
             method : 'GET',
             url: _config.api.invokeUrl + '/ride',
             headers: {
+                Accept: "*/*",
                 Authorization: authToken
             },
             data: JSON.stringify({
                 rideId : unicornID
             }),
             contentType : 'application/json',
-            success : getReqComplete
+            success : getReqComplete,
+            error: function ajaxError(jqXHR, textStatus, errorThrown) {
+                console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
+                console.error('Response: ', jqXHR.responseText);
+            }
         })
     }
 
